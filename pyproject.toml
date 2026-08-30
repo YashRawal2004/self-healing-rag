@@ -1,0 +1,36 @@
+[project]
+name = "self-healing-rag"
+version = "0.1.0"
+description = "A document Q&A agent whose retrieval loop grades its own work and corrects itself."
+readme = "README.md"
+authors = [
+    { name = "Yash Rawal", email = "yrawal2004@yahoo.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "langgraph",
+    "langchain",
+    "langchain-openai",
+    "langchain-community",
+    "langchain-text-splitters",
+    "pypdf",
+    "pydantic",
+    "python-dotenv",
+    "flask",
+    "flask-cors",
+    "psycopg[binary]",
+    "psycopg-pool",
+    "pgvector",
+    "argon2-cffi",
+    "cryptography",
+]
+
+[project.scripts]
+self-healing-rag = "self_healing_rag.app:main"
+self-healing-rag-server = "self_healing_rag.server.app:main"
+self-healing-rag-ingest = "self_healing_rag.ingest:main"
+self-healing-rag-loop = "self_healing_rag.rag.main:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
